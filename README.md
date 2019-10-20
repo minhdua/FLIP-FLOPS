@@ -40,6 +40,55 @@ if(i%2000==0 || (i < 1000 && i%100 == 0))
 from google.colab import drive
 drive.mount('/content/drive')
 
+!git clone https://github.com/AlexeyAB/darknet
+  
+!apt-get update
+!apt-get upgrade
+
+
+!apt-get install build-essential
+!apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+
+!apt-get install libavcodec-dev libavformat-dev libswscale-d
+
+!apt-get install libopencv-dev
+
+  
+%cd darknet
+
+!ls
+!sed -i 's/OPENCV=0/OPENCV=1/g' Makefile
+!sed -i 's/GPU=0/GPU=1/g' Makefile
+
+
+!ls
+%cd ../
+!ls
+
+
+!apt install g++-5
+!apt install gcc-5
+
+!apt update
+!apt upgrade
+
+
+!/usr/local/cuda/bin/nvcc --version
+
+%cd darknet
+!make
+!wget https://pjreddie.com/media/files/darknet53.conv.74
+
+
+
+!rm /content/darknet/backup -r
+!ln -s /content/drive/My\ Drive/ML/backup /content/darknet/backup
+
+%cd /content/drive/My\ Drive/ML/
+!unzip /content/drive/My\ Drive/ML/darknet.zip
+
+%cd /content/darknet
+!./darknet detector train data/phones.data yolo-phones.cfg darknet53.conv.74 -dont_show 
 ```
 7. giải nén file zip
 
